@@ -1,18 +1,14 @@
 import React from "react";
-
-class Header extends React.Component {
-  render() {
-    return (
-      <header>
-        <h1>Titulo</h1>
-        <nav>
-          <a href="#">Home</a>
-          <a href="#">Contacto</a>
-          <a href="#">Seccion</a>
-        </nav>
-      </header>
-    );
-  }
-}
+//destructuring inline
+const Header = ({ links }) => (
+  <header>
+    <h1>Titulo</h1>
+    <nav>
+      {links.map((link, i) => (
+        <a href={`/${link}`}>{link}</a>
+      ))}
+    </nav>
+  </header>
+);
 
 export default Header;

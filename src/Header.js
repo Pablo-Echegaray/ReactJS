@@ -5,7 +5,9 @@ const Header = ({ links }) => (
     <h1>Titulo</h1>
     <nav>
       {links.map((link, i) => (
-        <a href={`/${link}`}>{link}</a>
+        <a key={i} href={`/${link}`}>
+          {link}
+        </a>
       ))}
     </nav>
   </header>

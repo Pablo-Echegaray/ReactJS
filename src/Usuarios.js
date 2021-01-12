@@ -1,4 +1,5 @@
 import React from "react";
+import ListadoUsuarios from "./ListaUsuarios";
 
 const Usuarios = ({
   nombre,
@@ -35,19 +36,7 @@ const Usuarios = ({
         </div>
         <button>Guardar</button>
       </form>
-      <ul>
-        {usuarios.length ? (
-          usuarios.map((usuario, i) => (
-            <li key={i}>
-              {usuario.nombre} {usuario.apellido}
-              <button>Editar</button>
-              <button onClick={borrarUsuario.bind(null, i)}>Borrar</button>
-            </li>
-          ))
-        ) : (
-          <li>No hay Usuarios</li>
-        )}
-      </ul>
+      <ListadoUsuarios usuarios={usuarios} borrarUsuario={borrarUsuario} />
     </>
   );
 };

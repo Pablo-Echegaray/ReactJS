@@ -6,8 +6,7 @@ const Usuarios = ({
   apellido,
   usuarios,
   manejarElSubmit,
-  manejarCambioNombre,
-  manejarCambioApellido,
+  manejarCambioForm,
   borrarUsuario,
 }) => {
   function handleSubmit(e) {
@@ -20,18 +19,20 @@ const Usuarios = ({
         <div>
           {/*onChange para ir controlando el cambio de contenido de cada input*/}
           <input
-            onChange={manejarCambioNombre}
+            onChange={manejarCambioForm}
             type="text"
             placeholder="Nombre"
             value={nombre}
+            data-target="nombre"
           />
         </div>
         <div>
           <input
-            onChange={manejarCambioApellido}
+            onChange={manejarCambioForm}
             type="text"
             placeholder="Apellido"
             value={apellido}
+            data-target="apellido"
           />
         </div>
         <button>Guardar</button>

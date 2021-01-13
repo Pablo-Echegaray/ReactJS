@@ -12,13 +12,27 @@ const Header = ({ links }) => (
       ))}
     </nav>
   </header>
-);
+); /* let mapStateToProps = (store) => {
+  let {links} = store
+  return {
+    links: links,
+  };
+}; */ /* let mapStateToProps = ({ links }) => {
+  return {
+    links,
+  };
+};
+ */ //de esta manera Header estaria recibiendo links, y ya no habria necesidad de pasarle props desde App //conectamos el componente al store
 //analoga al getState() de redux
-let mapStateToProps = (store) => {
+/* let mapStateToProps = (store) => {
   return {
     //el nombre de prop, el valor del store
     links: store.links,
   };
-}; //de esta manera Header estaria recibiendo links, y ya no habria necesidad de pasarle props desde App
+}; */
 
-export default connect(mapStateToProps)(Header); //conectamos el componente al store
+/* let mapStateToProps = ({links}) => ({ links }); */
+
+/* export default connect(mapStateToProps)(Header);  */ export default connect(
+  ({ links }) => ({ links })
+)(Header);

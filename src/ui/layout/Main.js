@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 //destructuring directamente en lugar de recibir la variable props. Podria sacar las llaves y el return nuevamente.
 const Main = ({
@@ -21,4 +22,12 @@ let {contador, aumentarContador, resetearContador, restarContador} = props */
   );
 };
 
-export default Main;
+let mapStateToProps = (store) => {
+  return {
+    contador: store.contador,
+  };
+};
+
+let mapDispatchToProps = () => {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

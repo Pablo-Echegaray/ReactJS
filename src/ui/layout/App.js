@@ -9,7 +9,6 @@ class App extends React.Component {
     super();
     this.state = {
       contador: 0,
-      links: ["usuarios", "contacto", "nosotros"],
       form: {
         nombre: "",
         apellido: "",
@@ -67,7 +66,7 @@ class App extends React.Component {
   };
 
   render() {
-    let { contador, links, form, usuarios } = this.state;
+    let { contador, form, usuarios } = this.state;
     return (
       <>
         <Header />

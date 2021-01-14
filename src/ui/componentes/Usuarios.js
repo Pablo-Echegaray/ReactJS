@@ -1,25 +1,32 @@
 import React from "react";
 import ListadoUsuarios from "./ListaUsuarios";
+import { connect } from "react-redux";
+import {
+  manejarElSubmit,
+  manejarCambioNombre,
+  manejarCambioApellido,
+} from "../../api/actions";
+import { bindActionCreators } from "redux";
 
 const Usuarios = ({
   nombre,
   apellido,
   usuarios,
   manejarElSubmit,
-  manejarCambioForm,
+  manejarCambioNombre,
+  manejarCambioApellido,
   borrarUsuario,
 }) => {
   function handleSubmit(e) {
     e.preventDefault();
     manejarElSubmit();
-  } //hacer esto es una cuestion mas logica ya que Usuarios se encargaria de aquellos eventos que le competen, sino estariamos pasando el objeto evento y el preventDefault a traves de varias capas. Es mejor que cada componente se encargue de hacer lo que realmente deberia. Sino el obj evento y el preventDefault deberiamos ponerlo en el metodo manejarElSubmit() del componente "raiz" App.
+  }
   return (
     <>
       <form onSubmit={handleSubmit}>
         <div>
-          {/*onChange para ir controlando el cambio de contenido de cada input*/}
           <input
-            onChange={manejarCambioForm}
+            onChange={manejarCambioNombre}
             type="text"
             placeholder="Nombre"
             value={nombre}
@@ -28,7 +35,7 @@ const Usuarios = ({
         </div>
         <div>
           <input
-            onChange={manejarCambioForm}
+            onChange={manejarCambioApellido}
             type="text"
             placeholder="Apellido"
             value={apellido}
@@ -42,4 +49,14 @@ const Usuarios = ({
   );
 };
 
-export default Usuarios;
+export default connect(
+  ({ form }) => ({
+    nombre: form.nombre,
+    apellido: form.apellido,
+  }),
+  (dispatch) => ({
+    manejarCambioNombre: bindActionCreators(manejarCambioNombre, dispatch),
+    manejarCambioApellido: bindActionCreators(manejarCambioApellido, dispatch),
+    manejarElSubmit: bindActionCreators(manejarElSubmit, dispatch),
+  })
+)(Usuarios);

@@ -1,10 +1,32 @@
 let init = {
   links: ["usuarios", "contacto", "nosotros"],
   contador: 0,
-}; //esta variable seria como el this.state = { }
+  form: {
+    nombre: "",
+    apellido: "",
+  },
+  usuarios: [],
+};
 
 let reducer = (prevState = init, action) => {
   switch (action.type) {
+    case "APELLIDO_CAMBIAR":
+      return {
+        ...prevState,
+        form: {
+          ...prevState.form,
+          apellido: action.apellido,
+        },
+      };
+    case "NOMBRE_CAMBIAR":
+      return {
+        ...prevState,
+        form: {
+          ...prevState.form,
+          nombre: action.nombre,
+        },
+      };
+
     case "CONTADOR_SUMAR":
       return {
         ...prevState,
@@ -23,6 +45,6 @@ let reducer = (prevState = init, action) => {
     default:
       return prevState;
   }
-}; //cada case seria como un setState({})
+};
 
 export default reducer;

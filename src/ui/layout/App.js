@@ -18,14 +18,14 @@ class App extends React.Component {
 
   borrarUsuario = (i, e) => {
     console.log(i);
-    let start = this.state.usuarios.slice(0, i); //incluye 0, excluye i
-    let end = this.state.usuarios.slice(i + 1); //saltea el elemento ubicado en i y va hasta el final
+    let start = this.state.usuarios.slice(0, i);
+    let end = this.state.usuarios.slice(i + 1);
     let nuevos_usuarios = [...start, ...end];
     this.setState({
       usuarios: nuevos_usuarios,
     });
   };
-  //02 : 20: 00
+
   manejarElSubmit = () => {
     this.setState({
       usuarios: [...this.state.usuarios, this.state.form],

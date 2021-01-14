@@ -8,14 +8,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      contador: 0,
       form: {
         nombre: "",
         apellido: "",
       },
       usuarios: [],
     };
-    this.aumentarContador = this.aumentarContador.bind(this);
   }
 
   borrarUsuario = (i, e) => {
@@ -47,35 +45,12 @@ class App extends React.Component {
     });
   };
 
-  aumentarContador() {
-    this.setState({
-      contador: this.state.contador + 1,
-    });
-  }
-
-  restarContador = () => {
-    this.setState({
-      contador: this.state.contador - 1,
-    });
-  };
-
-  resetearContador = () => {
-    this.setState({
-      contador: 0,
-    });
-  };
-
   render() {
-    let { contador, form, usuarios } = this.state;
+    let { form, usuarios } = this.state;
     return (
       <>
         <Header />
-        <Main
-          contador={contador}
-          aumentarContador={this.aumentarContador}
-          restarContador={this.restarContador}
-          resetearContador={this.resetearContador}
-        />
+        <Main />
         <Usuarios
           nombre={form.nombre}
           apellido={form.apellido}

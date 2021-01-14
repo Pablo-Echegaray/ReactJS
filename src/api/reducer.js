@@ -18,7 +18,7 @@ let reducer = (prevState = init, action) => {
     case "CONTADOR_RESETEAR":
       return {
         ...prevState,
-        contador: prevState.contador,
+        contador: 0,
       };
     default:
       return prevState;

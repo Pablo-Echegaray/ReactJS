@@ -1,16 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
+import {
+  aumentarContador,
+  restarContador,
+  resetearContador,
+} from "../../api/actions";
+import { bindActionCreators } from "redux";
 
-//destructuring directamente en lugar de recibir la variable props. Podria sacar las llaves y el return nuevamente.
 const Main = ({
   contador,
   aumentarContador,
-  resetearContador,
   restarContador,
+  resetearContador,
 }) => {
-  /*  //destructuring 
-let {contador, aumentarContador, resetearContador, restarContador} = props */
-
   return (
     <main>
       <h2>Home</h2>
@@ -28,6 +30,13 @@ let mapStateToProps = (store) => {
   };
 };
 
-let mapDispatchToProps = () => {};
+let mapDispatchToProps = (dispatch) => {
+  return {
+    //nombreDeProp : tuFuncion + dispatch
+    aumentarContador: bindActionCreators(aumentarContador, dispatch),
+    restarContador: bindActionCreators(restarContador, dispatch),
+    resetearContador: bindActionCreators(resetearContador, dispatch),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

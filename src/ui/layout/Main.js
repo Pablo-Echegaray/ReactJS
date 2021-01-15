@@ -4,7 +4,7 @@ import {
   aumentarContador,
   restarContador,
   resetearContador,
-} from "../../api/actions";
+} from "../../api/actions/Contador";
 import { bindActionCreators } from "redux";
 
 const Main = ({
@@ -26,13 +26,12 @@ const Main = ({
 
 let mapStateToProps = (store) => {
   return {
-    contador: store.contador,
+    contador: store.Contador.contador,
   };
 };
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    //nombreDeProp : tuFuncion + dispatch
     aumentarContador: bindActionCreators(aumentarContador, dispatch),
     restarContador: bindActionCreators(restarContador, dispatch),
     resetearContador: bindActionCreators(resetearContador, dispatch),

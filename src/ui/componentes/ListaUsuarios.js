@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+import { borrarUsuario } from "../../api/actions/Usuarios";
+import { bindActionCreators } from "redux";
 
 const ListadoUsuarios = ({ usuarios, borrarUsuario }) => (
   <ul>
@@ -16,4 +19,7 @@ const ListadoUsuarios = ({ usuarios, borrarUsuario }) => (
   </ul>
 );
 
-export default ListadoUsuarios;
+export default connect(
+  ({ Usuarios }) => ({ usuarios: Usuarios.usuarios }),
+  (dispatch) => ({ borrarUsuario: bindActionCreators(borrarUsuario, dispatch) })
+)(ListadoUsuarios);

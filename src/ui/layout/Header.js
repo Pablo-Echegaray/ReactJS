@@ -1,14 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const Header = ({ links }) => (
   <header>
     <h1>Titulo</h1>
     <nav>
       {links.map((link, i) => (
-        <a key={i} href={`/${link}`}>
+        <NavLink key={i} to={`/${link}`}>
           {link}
-        </a>
+        </NavLink>
       ))}
     </nav>
   </header>

@@ -8,10 +8,6 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      form: {
-        nombre: "",
-        apellido: "",
-      },
       usuarios: [],
     };
   }
@@ -36,27 +32,15 @@ class App extends React.Component {
     });
   };
 
-  manejarCambioForm = (e) => {
-    this.setState({
-      form: {
-        ...this.state.form,
-        [e.target.dataset.target]: e.target.value,
-      },
-    });
-  };
-
   render() {
-    let { form, usuarios } = this.state;
+    let { usuarios } = this.state;
     return (
       <>
         <Header />
         <Main />
         <Usuarios
-          nombre={form.nombre}
-          apellido={form.apellido}
           usuarios={usuarios}
           manejarElSubmit={this.manejarElSubmit}
-          manejarCambioForm={this.manejarCambioForm}
           borrarUsuario={this.borrarUsuario}
         />
         <Footer />

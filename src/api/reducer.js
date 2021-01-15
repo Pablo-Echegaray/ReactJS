@@ -10,6 +10,15 @@ let init = {
 
 let reducer = (prevState = init, action) => {
   switch (action.type) {
+    case "SUBMIT_MANEJAR":
+      return {
+        ...prevState,
+        usuarios: [...prevState.usuarios, prevState.form],
+        form: {
+          nombre: "",
+          apellido: "",
+        },
+      };
     case "FORM_MANEJAR":
       return {
         ...prevState, //con esta linea le decimos que conserve el state (init) tal cual esta links: ["usuarios", "contacto", "nosotros"], contador: 0, form: { nombre: "", apellido: "",},usuarios: [],

@@ -1,11 +1,7 @@
 import React from "react";
 import ListadoUsuarios from "./ListaUsuarios";
 import { connect } from "react-redux";
-import {
-  manejarElSubmit,
-  manejarCambioNombre,
-  manejarCambioApellido,
-} from "../../api/actions";
+import { manejarElSubmit, manejarCambioForm } from "../../api/actions";
 import { bindActionCreators } from "redux";
 
 const Usuarios = ({
@@ -13,8 +9,7 @@ const Usuarios = ({
   apellido,
   usuarios,
   manejarElSubmit,
-  manejarCambioNombre,
-  manejarCambioApellido,
+  manejarCambioForm,
   borrarUsuario,
 }) => {
   function handleSubmit(e) {
@@ -26,7 +21,7 @@ const Usuarios = ({
       <form onSubmit={handleSubmit}>
         <div>
           <input
-            onChange={manejarCambioNombre}
+            onChange={manejarCambioForm}
             type="text"
             placeholder="Nombre"
             value={nombre}
@@ -35,7 +30,7 @@ const Usuarios = ({
         </div>
         <div>
           <input
-            onChange={manejarCambioApellido}
+            onChange={manejarCambioForm}
             type="text"
             placeholder="Apellido"
             value={apellido}
@@ -55,8 +50,7 @@ export default connect(
     apellido: form.apellido,
   }),
   (dispatch) => ({
-    manejarCambioNombre: bindActionCreators(manejarCambioNombre, dispatch),
-    manejarCambioApellido: bindActionCreators(manejarCambioApellido, dispatch),
+    manejarCambioForm: bindActionCreators(manejarCambioForm, dispatch),
     manejarElSubmit: bindActionCreators(manejarElSubmit, dispatch),
   })
 )(Usuarios);

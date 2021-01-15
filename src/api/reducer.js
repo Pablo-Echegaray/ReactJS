@@ -10,23 +10,14 @@ let init = {
 
 let reducer = (prevState = init, action) => {
   switch (action.type) {
-    case "APELLIDO_CAMBIAR":
+    case "FORM_MANEJAR":
       return {
-        ...prevState,
+        ...prevState, //con esta linea le decimos que conserve el state (init) tal cual esta links: ["usuarios", "contacto", "nosotros"], contador: 0, form: { nombre: "", apellido: "",},usuarios: [],
         form: {
-          ...prevState.form,
-          apellido: action.apellido,
+          ...prevState.form, //con esta linea nos referimos a la conservacion exclusivamente de form { } apellido: prevState.form.apellido, nombre: prevState.form.nombre
+          [action.e.target.dataset.target]: action.e.target.value, //aqui cambiamos las propiedades nombre y apellido de forma dinamica
         },
       };
-    case "NOMBRE_CAMBIAR":
-      return {
-        ...prevState,
-        form: {
-          ...prevState.form,
-          nombre: action.nombre,
-        },
-      };
-
     case "CONTADOR_SUMAR":
       return {
         ...prevState,
